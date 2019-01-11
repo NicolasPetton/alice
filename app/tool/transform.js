@@ -20,7 +20,7 @@ module.exports = (transformers) => {
           const v = transformers[k]
 
           if (contentType.indexOf(k) === 0) {
-            processors.push(v())
+            processors.push(v(req, res))
           }
         }
       }
