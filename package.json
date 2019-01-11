@@ -12,7 +12,7 @@
   "engines": {
     "node": ">=8"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NInfolab/alice.git"
