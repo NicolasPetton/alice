@@ -139,26 +139,26 @@ StartLimitInterval=600
 WantedBy=alice.service
 EOM"
 
+if ! [ -f ${SYSTEMD_DIR}/alice.service ]; then
 # Generate alice systemd service
 sudo sh -c "cat > ${SYSTEMD_DIR}/alice.service <<- EOM
 [Unit]
 Description=Alice service
 Documentation=https://github.com/NInfolab/alice
 After=network.target
-
 [Service]
 Type=oneshot
 ExecStart=/bin/true
 RemainAfterExit=yes
-
 [Install]
 WantedBy=multi-user.target
 EOM"
+fi
 
 # Start Alice
-sudo systemctl enable alice alice-caddy alice-node
 sudo systemctl daemon-reload
-sudo systemctl start alice
+sudo systemctl enable alice alice-caddy alice-node
+sudo systemctl start alice alice-caddy alice-node
 
 echo "All set :)"
 echo "Visit https://$HOSTNAME"
