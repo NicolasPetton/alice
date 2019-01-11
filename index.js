@@ -42,6 +42,7 @@ const transforms = {
 app.use(require('./app/tool/transform')(transforms))
 
 app.use((req, res) => {
+  delete req.headers['accept-encoding']
   proxy.web(req, res, { target: config.target })
 })
 

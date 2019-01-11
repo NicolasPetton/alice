@@ -1,5 +1,5 @@
 const pipe = require('multipipe')
-const through = require('through')
+const Stream = require('stream')
 const iconv = require('iconv-lite')
 const getCharset = require('charset')
 const zlib = require('zlib')
@@ -29,7 +29,7 @@ module.exports = (transformers) => {
         return writeHead.apply(res, arguments)
       }
 
-      // force charset to utf8
+      // // force charset to utf8
       let charset = getCharset(contentType)
 
       // Do nothing unless the content-type is text. (Fix #21)
@@ -49,7 +49,8 @@ module.exports = (transformers) => {
       }
 
       // Force content type to utf8
-      processors.unshift(through(function write (data) {
+      const transform = new Stream.Transform({ objectMode: true })
+      transform._transform = (data, _, done) => {
         if (!charset) {
           charset = getCharset(res.headers, data)
         }
@@ -59,8 +60,9 @@ module.exports = (transformers) => {
           data = Buffer.from(data.toString().replace(charset, 'utf8'))
         }
 
-        this.emit('data', data)
-      }))
+        done(null, data)
+      }
+      processors.unshift(transform)
 
       // Gunzip response if Gziped
       const contentEncoding = this.getHeader('content-encoding')

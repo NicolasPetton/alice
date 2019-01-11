@@ -29,12 +29,11 @@
     "http-proxy": "^1.13.1",
     "iconv-lite": "^0.4.13",
     "morgan": "^1.7.0",
-    "multipipe": "^0.3.0",
-    "replacestream": "^4.0.0",
-    "through": "^2.3.8"
+    "multipipe": "^3.0.0",
+    "replacestream": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
+    "eslint": "^5.12.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.1",
