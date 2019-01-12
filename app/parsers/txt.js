@@ -10,7 +10,7 @@ module.exports = (req, res) => {
 
   if (config.hostnames_to_replace && Object.keys(config.hostnames_to_replace).length > 0) {
     for (let k in config.hostnames_to_replace) {
-      handlers.push(replaceStream('//' + k, '//' + config.hostnames_to_replace[k]))
+      handlers.unshift(replaceStream('//' + k, '//' + config.hostnames_to_replace[k]))
     }
   }
 

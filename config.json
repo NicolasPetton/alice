@@ -1,8 +1,8 @@
 {
-  "target": "https://rsf.org/",
+  "target": "https://korben.info/",
   "port": 3000,
   "log_path": "app.log",
   "hostnames_to_replace": {
-    "mysite1.tld": "en.rsf.org"
+    "services.korben.info": "en.rsf.org"
   }
 }
