@@ -84,7 +84,7 @@ fi
 
 # Alice
 if [ ! -d $SRC_DIR ]; then
-  sudo git clone https://github.com/NInfolab/alice.git $SRC_DIR
+  sudo git clone https://github.com/nicolaspetton/alice.git $SRC_DIR
   sudo sh -c "cd $SRC_DIR && npm install"
 else
   sudo sh -c "cd $SRC_DIR && git pull && npm install"
