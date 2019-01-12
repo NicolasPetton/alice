@@ -1,3 +1,5 @@
+#!/bin/env node
+
 const httpProxy = require('http-proxy')
 const connect = require('connect')
 const http = require('http')
